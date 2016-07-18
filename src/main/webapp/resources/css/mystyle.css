@@ -1,0 +1,255 @@
+@CHARSET "UTF-8";
+/*
+================================
+        body 적용 
+===================================      
+*/
+* {
+	margin: 0;
+	padding: 0;
+	line-height: 1.5;
+	color: #333333;
+	
+}
+
+body {
+	//background-color: #999999;
+	background-color: #555555;
+	text-align: center;
+}
+
+div#pagebody {
+	width: 796px;
+	margin: 0 auto;
+	text-align: left;
+	background-image: url("../images/bg_pagebody.gif");
+	background-repeat: repeat-y;
+	background-color: #ffffff;
+}
+
+/*
+  ============================================
+헤더
+============================================
+*/
+div#header {
+	height: 77px;
+	background-image: url("../images/bg_header.jpg");
+	background-repeat: no-repeat;
+	background-color: #cccccc;
+}
+
+h1 {
+	padding: 20px 0px 0px 30px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 a {
+	text-decoration: none;
+}
+
+/*
+  ============================================
+     메인 메뉴
+============================================*/
+ul#menu {
+	height: 42px;
+	background-color: #eeeeee;
+	font-weight: bold;
+}
+
+li#menu01,li#menu02,li#menu03,li#menu04,li#menu05 {
+	float: left;
+	display: inline;
+	list-style-type: none;
+	background-repeat: no-repeat;
+}
+
+/*  
+======================================
+버튼 01 ~ 05는 각각 다른 배경 이미지를 지정  
+=======================================
+*/
+li#menu01 {
+	width: 164px;
+	height: 42px;
+	background-image: url("../images/bg_menu01.jpg");
+}
+
+li#menu02 {
+	width: 156px;
+	height: 42px;
+	background-image: url("../images/bg_menu02.jpg");
+}
+
+li#menu03 {
+	width: 156px;
+	height: 42px;
+	background-image: url("../images/bg_menu03.jpg");
+}
+
+li#menu04 {
+	width: 156px;
+	height: 42px;
+	background-image: url("../images/bg_menu04.jpg");
+}
+
+li#menu05 {
+	width: 164px;
+	height: 42px;
+	background-image: url( "../images/bg_menu05.jpg");
+}
+
+ul#menu a {
+	display: block;
+	height: 42px;
+	padding-top: 4px;
+	text-align: center;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 
+============================================
+  LEFT   Menu Area
+============================================ */
+div#submenu {
+	width: 160px;
+	margin: 10px 10px 10px 25px;
+	display: inline;
+	float: left;
+}
+
+div#submenu_header {
+	height: 26px;
+	padding: 4px 0px 0px 0px;
+	background-image: url("../images/bg_submenu_header.gif");
+	background-repeat: no-repeat;
+	background-position: top;
+	background-color: #cccccc;
+	font-size: 90%;
+	font-weight: bold;
+	text-align: center;
+}
+
+ul#submenu_body {
+	padding-bottom: 6px;
+	background-image: url("../images/bg_submenu_footer.gif");
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-color: #cccccc;
+}
+
+ul#submenu_body  li{
+	font-size: 90%;
+	list-style-type: none;
+	display: inline;
+}
+
+ul#submenu_body  li a{
+	display: block;
+	margin: 0px 4px 0px 4px;
+	padding: 0px 0px 0px 20px;
+	background-color: #eeeeee;
+	text-decoration: none;
+}
+
+ul#submenu_body li a:hover {
+	background-color: #ffffff;
+}
+
+/*
+ ============================================
+컨텐츠 (중앙과 오른쪽 2 열 전체)
+============================================
+*/
+div#content {
+	width: 560px;
+	margin: 10px 20px 10px 0px;
+	float: right;
+}
+/*
+ ============================================
+  컨텐츠 (중앙 컬럼)
+ ============================================
+*/
+div#news {
+	width: 390px;
+	margin-right: 5px;
+	padding-top: 10px;
+	float: left;
+	background-image: url( "../images/bar_news.gif");
+	background-repeat: no-repeat;
+}
+
+/* 제목 · 단락 · 수평선의 스타일 지정 */
+h2 {
+	font-size: 100%;
+	margin-bottom: 10px;
+	padding-left: 25px;
+	font-size: 95%;
+	border-bottom: solid 1px #cccccc;
+	background-image: url( "../images/icon.gif");
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+h3 {
+	font-size: 90%;
+	margin-left: 5px;
+}
+
+p {
+	font-size: 90%;
+	margin: 10px 0px 10px 10px;
+	text-indent: 10px;
+}
+
+hr {
+	height: 1px;
+	border: solid 1px #cccccc;
+	margin-bottom: 30px;
+}
+
+/*
+============================================
+    오른쪽 열
+ ============================================
+*/
+div#dictionary {
+	width: 150px;
+	padding-top: 10px;
+	float: right;
+	background-image: url( "../images/bar_pickup.gif");
+	background-repeat: no-repeat;
+}
+
+div#dictionary ul {
+	margin-left: 10px;
+	font-size: 90%;
+}
+
+div#dictionary  li {
+	list-style-type: none;
+	line-height: 1.8;
+}
+
+/*
+ ============================================
+   바닥글 
+============================================
+*/
+div#footer {
+	height: 42px;
+	text-align: center;
+	clear: both;
+	background-image: url( "../images/bg_footer.jpg");
+	background-repeat: no-repeat;
+	background-color: #cccccc;
+}
+
+address {
+	font-style: normal;
+	font-size: small;
+	padding: 5px 0px 5px 0px;
+}

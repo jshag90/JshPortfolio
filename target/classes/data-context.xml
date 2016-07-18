@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+
+
+
+	<bean id="userInfo01" class="com.secuve.seminar.dto.User">
+		<constructor-arg name="id" value="jshag90" />
+		<constructor-arg value="1234" />
+	</bean>
+
+	<bean id="userInfo02" class="com.secuve.seminar.dto.User">
+		<constructor-arg value="jshag901" />
+		<constructor-arg value="5678" />
+	</bean>
+
+	<bean id="userRepository" class="com.secuve.seminar.service.UserRepository">
+		<property name="userList">
+			<list>
+				<ref bean="userInfo01" />
+				<ref bean="userInfo02" />
+			</list>
+		</property>
+	</bean>
+
+
+
+
+</beans>
