@@ -50,7 +50,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String List(Model model) {
+	public String List(Locale locale,Model model) {
 
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath*:data-context.xml");
 
@@ -59,8 +59,10 @@ public class HomeController {
 		User user02 = (User) ctx.getBean("userInfo02");
 		userList.add(user01);
 		userList.add(user02);
+		
 
 		model.addAttribute("userList", userList);
+		
 
 		return "list";
 	}

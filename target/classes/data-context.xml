@@ -9,14 +9,20 @@
 
 
 
+
 	<bean id="userInfo01" class="com.secuve.seminar.dto.User">
-		<constructor-arg name="id" value="jshag90" />
-		<constructor-arg value="1234" />
+		<property name="id" value="jshag90" />
+		<property name ="password" value="1234" />
+		<property name="name" value="SeonHakji"/>
+		<property name="email" value="jshag90@naver.com"/>
+		
 	</bean>
 
 	<bean id="userInfo02" class="com.secuve.seminar.dto.User">
-		<constructor-arg value="jshag901" />
-		<constructor-arg value="5678" />
+		<property name="id" value="wltjsgkr90" />
+		<property name ="password" value="1234" />
+		<property name="name" value="SeonHakji02"/>
+		<property name="email" value="wltjsgkr90@hanmail.net"/>
 	</bean>
 
 	<bean id="userRepository" class="com.secuve.seminar.service.UserRepository">

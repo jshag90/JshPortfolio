@@ -12,7 +12,7 @@
 
 <frameset rows="117,*" framespacing="0" border="0" frameborder="0">
 	<frame src="./menu" name="menu" frameborder="no" border="0"
-		framespacing="0" scrolling="no" marginwidth="0" marginheight="0">
+		scrolling="no" marginwidth="0" marginheight="0">
 	<frame src="./content" name="content" scrolling="auto" marginwidth="0"
 		marginheight="0">
 </frameset>

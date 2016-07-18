@@ -13,16 +13,22 @@
 		<!--  header -->
 		<div id="header">
 			<h1>
-				<a href="./index"> JAVA SCRIPT</a>
+				<a href="./index"> AOP 기반 관리자 페이지 </a>
 			</h1>
 		</div>
 		<!--  MAIN NENU -->
 		<ul id="menu">
-			<li id="menu01"><a href="./list" target="content">User_List</a></li>
-			<li id="menu02"><a href="#">Class</a></li>
-			<li id="menu03"><a href="#">Property</a></li>
-			<li id="menu04"><a href="#">Dom</a></li>
-			<li id="menu05"><a href="#">Styling</a></li>
+
+			<li id="menu01"><a href="./index"" >관리자 메인 페이지</a></li>
+			<!-- 회원수, 게시글, 방문자수, 새글 -->
+			<li id="menu02"><a href="./list" target="content">회원 관리</a></li>
+			<!-- 회원 탈퇴, 등급 관리 -->
+			<li id="menu03"><a href="#">공지사항</a></li>
+			<!-- 관리자 전용 공지사항 페이지 -->
+			<li id="menu04"><a href="#">관리자 FAQ 답변</a></li>
+
+			<li id="menu05"><a href="#">시스템 로그(AOP)</a></li>
+
 		</ul>
 	</div>
 

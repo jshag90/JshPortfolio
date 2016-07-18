@@ -9,25 +9,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<style>  
-.mytable { border-collapse:collapse; }  
-.mytable th, .mytable td { border:1px solid black; }
+<style>
+.mytable {
+	border-collapse: collapse;
+}
+
+.mytable th, .mytable td {
+	border: 1px solid black;
+}
 </style>
 <body>
 	<div id="pagebody">
 		<div id="content">
 			<div id="news">
-			<table class="mytable">
-				<tr>
-					<th colspan="2">ID</th>
-					<th colspan="3">Password</th>
-					<br>
+				<table class="mytable">
+					<tr>
+						<th align="center">ID</th>
+						<th align="center">PASSWORD</th>
+						<th align="center">NAME</th>
+						<th align="center">E-MAIL</th>
+					</tr>
+					
 					<c:forEach var="userList" items="${userList}" varStatus="status">
-						<td><c:out value="${userList.id}" /></td>
-						<td><c:out value="${userList.password }" /></td>
-						<br>
+						<tr>
+							<td><c:out value="${userList.id}" /></td>
+							<td><c:out value="${userList.password }" /></td>
+							<td><c:out value="${userList.name }" /></td>
+							<td><c:out value="${userList.email }" /></td>
+							
+							<br>
+						</tr>
 					</c:forEach>
-				</tr>
+					
 				</table>
 			</div>
 
