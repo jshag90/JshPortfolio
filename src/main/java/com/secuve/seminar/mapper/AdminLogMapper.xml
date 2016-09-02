@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.secuve.seminar.mapper.AdminLogMapper">
+
+	<resultMap id="LogResult" type="com.secuve.seminar.dto.Log">
+		<result property="logUserName" column="LogUserName" />
+		<result property="logId" column="LogId" />
+		<result property="logRegDate" column="LogRegDate" />
+		<result property="logContent" column="LogContent" />
+		<result property="ipAddress" column="IpAddress" />
+	</resultMap>
+
+	<select id="logList" resultMap="LogResult">
+		select * from log order by	LogRegDate DESC
+	</select>
+	
+	<insert id="logInsert" parameterType="com.secuve.seminar.dto.Log">
+		INSERT INTO
+		log(LogUserName,LogRegDate,LogId,LogContent,IpAddress,LogInHit)
+		values(#{LogUserName},NOW(),#{LogId},#{LogContent},#{IpAddress},#{LogInHit})
+	</insert>
+	
+	<select id="logListbyLogUserName" parameterType="java.lang.String" resultMap="LogResult">
+		select * from log where LogUserName=#{LogUserName} order by	LogRegDate DESC
+	</select>
+	
+	<select id="logListbyAccessIp" parameterType="java.lang.String" resultMap="LogResult">
+		select * from log where IpAddress=#{IpAddress} order by LogRegDate DESC
+	</select>
+	
+	<select id="logListbyDate" parameterType="java.lang.String" resultMap="LogResult">
+		select * from log where LogRegDate=#{LogRegDate} order by LogRegDate DESC
+	</select>
+	
+	<select id="logListbyContent" parameterType="java.lang.String" resultMap="LogResult">
+		select * from log where LogContent=#{LogContent} order by LogRegDate DESC
+	</select>
+
+</mapper>
