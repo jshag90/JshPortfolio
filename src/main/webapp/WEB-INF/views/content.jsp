@@ -3,10 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
+<script type="text/javascript"	src="./resources/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="./resources/js/modules/exporting.js"></script>
+<script type="text/javascript" src="./resources/js/highcharts.js"></script>
 <script type="text/javascript">
 var logHour=${logStatisListHour};
 var logAccessCount=${logStatisListAccessCount};
@@ -17,12 +16,8 @@ var logAccessCount=${logStatisListAccessCount};
 					title : {
 						text : '시간대 별 접속자 수 통계',
 						x : -20
-					//center
+					
 					},
-					/* subtitle : {
-						text : 'Source: WorldClimate.com',
-						x : -20
-					}, */
 					xAxis : {
 						 categories : JSON.parse("[" + logHour + "]")
 
@@ -65,12 +60,8 @@ var logAccessCount=${logStatisListAccessCount};
 <body>
 
 	<div id="pagebody">
-		<!-- LEFT   Menu Area-->
-		<!-- <div style="margin-left: 10px; margin-top: 10px; float: left;">
-		<img src="./resources/images/secuveLog.jpg" width="90" height="70" />
-			</div> -->
-
-		<div id="submenu">
+		
+			<div id="submenu">
 
 			<div id="submenu_header">최신 게시글</div>
 			<c:forEach var="latestBoardList" items="${latestBoardList}" varStatus="status">
