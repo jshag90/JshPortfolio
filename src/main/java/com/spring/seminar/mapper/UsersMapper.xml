@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.seminar.mapper.UsersMapper">
+
+	<resultMap id="UserResult" type="com.spring.seminar.dto.User">
+		<result property="userName" column="userName" />
+		<result property="password" column="password" />
+		<result property="isAdmin" column="isAdmin" />
+	</resultMap>
+
+	<insert id="insertUsers" parameterType="com.spring.seminar.dto.User">
+		INSERT INTO users(id,userName, password, isAdmin) VALUES(#{id},#{userName},#{password},'n')
+	</insert>
+	
+	<resultMap id="UserInfoResult" type="com.spring.seminar.dto.UserInfo">
+		<result property="email" column="email" />
+		<result property="tel" column="tel" />
+	</resultMap>
+	
+	<insert id="insertUsersInfo" parameterType="com.spring.seminar.dto.UserInfo">
+	INSERT INTO usersInfo(email, tel) values(#{email}, #{tel})
+	</insert>
+	
+	<select id="userInfoList" resultMap="UserInfoResult">
+		select * from usersInfo
+	</select>
+
+	<select id="getUserByUserName" resultType="com.spring.seminar.dto.User">
+		select * from users where userName=#{userName}
+	</select>
+	
+	<select id="getUserInfoByInfoId" parameterType="long" resultType="com.spring.seminar.dto.UserInfo">
+		select * from usersInfo where infoId=#{infoId}
+	</select>
+	
+
+	<select id="userList" resultMap="UserResult">
+		select * from users
+	</select>
+
+	<update id="userAccountModifybyUserName" parameterType="com.spring.seminar.dto.User">
+		update users set password=#{password} where	userName=#{userName}
+	</update>
+	
+	<update id="userInfoAccountModifybyUserName" parameterType="com.spring.seminar.dto.UserInfo">
+		update usersInfo set email=#{email}, tel=#{tel} where infoId=#{infoId}
+	</update>
+
+	<delete id="userManagerDeleteById"  parameterType="long">
+		delete from	users where id=#{id}
+	</delete>
+	
+	<delete id="userInfoManagerDeleteByInfoId" parameterType="long">
+		delete from usersInfo where infoId=#{infoId}
+	</delete>
+
+	<update id="userManagerIsAdminUpdateById" parameterType="com.spring.seminar.dto.User">
+		update
+		users set isAdmin=#{isAdmin} where id=#{id}
+	</update>
+
+	<select id="getIdbyUserName" parameterType="java.lang.String" resultType="long">
+		select id from users where userName=#{userName}
+	</select>
+
+</mapper>

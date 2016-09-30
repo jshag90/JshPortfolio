@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.seminar.mapper.NoticeBoardMapper">
+
+	<resultMap id="NoticeResult" type="com.spring.seminar.dto.Notice">
+		<result property="noticeId" column="NoticeId" />
+		<result property="noticeUserName" column="NoticeUserName" />
+		<result property="noticeTitle" column="NoticeTitle" />
+		<result property="noticeContent" column="NoticeContent" />
+		<result property="noticeRegDate" column="NoticeRegDate" 	javaType="java.sql.Date" />
+
+	</resultMap>
+
+	<select id="noticeBoardList" resultMap="NoticeResult">
+		select * from notice	order by NoticeId DESC
+	</select>
+
+	<insert id="noticeBoardWrite" parameterType="com.spring.seminar.dto.Notice">
+		insert into notice(NoticeId,NoticeUserName,NoticeTitle,NoticeContent,NoticeRegDate)
+		values(#{NoticeId},#{NoticeUserName},#{NoticeTitle},#{NoticeContent},NOW())
+	</insert>
+
+	<delete id="noticeBoardDelete" parameterType="long">
+		delete from notice where NoticeId=#{NoticeId}
+	</delete>
+
+	<select id="noticeBoardViewbyNoticeId" resultMap="NoticeResult">
+		select * from notice where NoticeId=#{NoticeId}
+	</select>
+
+	<update id="noticeBoardModifybyNoticeId" parameterType="com.spring.seminar.dto.Notice">
+		update 	notice set NoticeTitle=#{NoticeTitle}, NoticeContent=#{NoticeContent} where NoticeId=#{NoticeId}
+	</update>	
+
+</mapper>
