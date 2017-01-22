@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.paging.CommonConstants;
+import com.spring.paging.ListVO;
+import com.spring.paging.PagingBean;
 import com.spring.seminar.dto.Board;
 import com.spring.seminar.mapper.UserBoardMapper;
 
@@ -15,18 +18,25 @@ public class UserBoardServiceImpl implements UserBoardService {
 	UserBoardMapper userBoardMapper;
 
 	@Override
-	public void userBoardWrite(Board board) {
-		userBoardMapper.userBoardWrite(board);
+	public ListVO userBoardList(String pageNo) {
+		if (pageNo == null | pageNo == "")
+			pageNo = "1";
 
+		ArrayList<Board> boardResult = new ArrayList<Board>();
+		Integer offSet = (Integer.parseInt(pageNo) - 1) * CommonConstants.CONTENT_NUMBER_PER_PAGE;
+		
+		boardResult = userBoardMapper.userBoardList(offSet.toString());
+		int total = userBoardMapper.userBoardListCount();
+		PagingBean paging = new PagingBean(total, Integer.parseInt(pageNo));
+		ListVO listVo = new ListVO(boardResult, paging);
+
+		return listVo;
 	}
 
 	@Override
-	public ArrayList<Board> userBoardList() {
-		ArrayList<Board> boardResult = new ArrayList<Board>();
+	public void userBoardWrite(Board board) {
+		userBoardMapper.userBoardWrite(board);
 
-		boardResult = userBoardMapper.userBoardList();
-
-		return boardResult;
 	}
 
 	@Override
@@ -53,7 +63,7 @@ public class UserBoardServiceImpl implements UserBoardService {
 	public void userBoardHitCount(long bId) {
 
 		userBoardMapper.userBoardHitCount(bId);
-		
+
 	}
 
 }

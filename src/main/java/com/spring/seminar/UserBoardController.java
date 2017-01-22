@@ -12,21 +12,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.spring.paging.ListVO;
 import com.spring.seminar.dto.Board;
 import com.spring.seminar.dto.User;
 import com.spring.seminar.service.UserBoardService;
 
 @Controller
-@SessionAttributes({ "user", "board", "log", "qna", "notice", "userInfo" })
+@SessionAttributes({ "user", "board", "log", "qna", "notice", "userInfo","userBoardList" })
 public class UserBoardController {
 
 	@Autowired(required = false)
 	private UserBoardService userBoardService;
 
-	@RequestMapping(value = "/usercontent", method = RequestMethod.GET)
-	public String userContent(@ModelAttribute("user") User user, @ModelAttribute("board") Board board, Model model) {
-		List<Board> boardList = userBoardService.userBoardList();
-		model.addAttribute("userBoardList", boardList);
+	@RequestMapping(value = "/usercontent", method = {RequestMethod.GET,RequestMethod.POST})
+	public String userContent(@RequestParam("pageNo") String pageNo, @ModelAttribute("user") User user, @ModelAttribute("board") Board board, Model model) {
+		System.out.println("userContent()");
+		System.out.println("pageNo::"+pageNo);
+		pageNo = (pageNo != null) ? pageNo : "1";
+		ListVO listVo = userBoardService.userBoardList(pageNo);
+		model.addAttribute("userBoardList", listVo);
 
 		return "userContent";
 	}
@@ -56,7 +60,7 @@ public class UserBoardController {
 
 		userBoardService.userBoardWrite(board);
 
-		return "redirect:/usercontent";
+		return "redirect:/usercontent?pageNo=1";
 	}
 
 	@RequestMapping("/userobardview")

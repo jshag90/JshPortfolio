@@ -26,7 +26,7 @@ public class AdminMainController {
 	AdminMainService adminMainService;
 
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
-	public String adminContent(@ModelAttribute("qna") Qna qna,@ModelAttribute("user") User user,Model model) {
+	public String adminContent(@ModelAttribute("qna") Qna qna, @ModelAttribute("user") User user,Model model) {
 		System.out.println("adminContent()");
 		ArrayList<Log> accessIdList = adminMainService.accessIdSearch();
 		model.addAttribute("accessIdList", accessIdList);

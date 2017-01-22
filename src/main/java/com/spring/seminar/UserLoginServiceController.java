@@ -1,5 +1,6 @@
 package com.spring.seminar;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.spring.paging.ListVO;
 import com.spring.seminar.dto.Board;
 import com.spring.seminar.dto.Log;
 import com.spring.seminar.dto.Notice;
@@ -22,6 +24,7 @@ import com.spring.seminar.dto.Qna;
 import com.spring.seminar.dto.User;
 import com.spring.seminar.dto.UserInfo;
 import com.spring.seminar.mapper.UsersMapper;
+import com.spring.seminar.service.UserBoardService;
 import com.spring.seminar.service.UserLoginService;
 
 @Controller
@@ -30,9 +33,12 @@ public class UserLoginServiceController {
 
 	@Autowired(required = false)
 	private UserLoginService userLoginService;
+	
+	@Autowired(required = false)
+	private UserBoardService userBoardService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {//?„¸?…˜?„ ?œ„?•œ ê°ì²´ ì´ˆê¸°?™”
+	public String home(Model model) {//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ê°ì²´ ì´ˆê¸°?ï¿½ï¿½
 
 		model.addAttribute("user", new User());
 		model.addAttribute("board", new Board());
@@ -62,7 +68,7 @@ public class UserLoginServiceController {
 			
 			userInfo.setEmail(userInfo.getEmail());
 			userInfo.setTel(userInfo.getTel());
-			//userInfo.setTel(null); //?Š¸?™?­?…˜ Test
+			//userInfo.setTel(null); //?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ Test
 			
 			userLoginService.insertUsers(user);
 			userLoginService.insertUsersInfo(userInfo);
@@ -79,16 +85,18 @@ public class UserLoginServiceController {
 		System.out.println("password:" + password);
 
 		if (userLoginService.getUserByLogin(userName, password)) {
-
+			ListVO listVo = userBoardService.userBoardList("1");
+			model.addAttribute("userBoardList", listVo);
+			
 			if (userLoginService.getUserByUserNameAndIsAdmin(userName, password, "y")) {
 				return "index";
 			}
-			return "userIndex";
+			return "userContent";
 
 		} else {
 
 			model.addAttribute("message", "no register information! please check your Account or sign up.");
-			System.out.println("?“±ë¡ëœ IDê°? ?—†?Œ");
+			System.out.println("?ï¿½ï¿½ë¡ëœ IDï¿½? ?ï¿½ï¿½?ï¿½ï¿½");
 
 			return "home";
 		}
@@ -120,7 +128,7 @@ public class UserLoginServiceController {
 	public String userAccountModify(@ModelAttribute("user") User user, Model model,
 			@ModelAttribute("userInfo") UserInfo userInfo) {
 
-		user = userLoginService.getUserByUserName(user.getUserName());// ?„¸?…˜?—?„œ ë°›ì? UserName?„ ?†µ?•˜?—¬ ?•´?‹¹ userê°ì²´ë¥? Return
+		user = userLoginService.getUserByUserName(user.getUserName());// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ë°›ï¿½? UserName?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ userê°ì²´ï¿½? Return
 
 		long userInfoId = userLoginService.getIdbyUserName(user.getUserName());
 		userInfo = userLoginService.getUserInfoByInfoId(userInfoId);
@@ -139,7 +147,7 @@ public class UserLoginServiceController {
 		user.setPassword(password);
 		userLoginService.userAccountModifybyUserName(user);
 		
-		user = userLoginService.getUserByUserName(user.getUserName());//user?…Œ?´ë¸”ì—?„œ ?•´?‹¹ UserName?˜ idê°? ë°›ê¸°
+		user = userLoginService.getUserByUserName(user.getUserName());//user?ï¿½ï¿½?ï¿½ï¿½ë¸”ì—?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ UserName?ï¿½ï¿½ idï¿½? ë°›ê¸°
 		userInfo.setInfoId(user.getId());
 		userInfo.setEmail(userInfo.getEmail());
 		userInfo.setTel(userInfo.getTel());

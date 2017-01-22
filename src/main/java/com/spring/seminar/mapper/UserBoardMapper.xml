@@ -14,8 +14,16 @@
 		<result property="regDate" column="regDate" javaType="java.sql.Date" />
 	</resultMap>
 
-	<select id="userBoardList" resultMap="BoardResult">
-		select * from userBoard order by bId DESC
+	<select id="userBoardList" resultMap="BoardResult" >
+		select * from userBoard order by bId DESC LIMIT #{offset},5
+	</select>
+	
+	<select id="userBoardListPaging" parameterType ="hashmap" resultMap="BoardResult">
+		select * from userBoard order by bId DESC LIMIT #{offset},#{noOfRecords}
+	</select>
+	
+	<select id="userBoardListCount" resultType="int">
+		SELECT COUNT(*) FROM userBoard
 	</select>
 
 	<insert id="userBoardWrite" parameterType="com.spring.seminar.dto.Board">
