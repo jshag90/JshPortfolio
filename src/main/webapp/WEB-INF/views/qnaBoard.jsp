@@ -7,9 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<title>Insert title here</title>
+<title>Spring Seminar</title>
 <link rel="stylesheet" type="text/css"
 	href="./resources/css/mystyle.css" />
+	
+	<!-- Bootstrap Core CSS -->
+<link href="./resources/vendor/bootstrap/css/bootstrap.min.css"	rel="stylesheet">
+
+<!-- Theme CSS -->
+<link href="./resources/css/clean-blog.min.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="./resources/vendor/font-awesome/css/font-awesome.min.css" 	rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' 	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+	
 <style type="text/css">
 * {
 	font-size: 9pt;
@@ -92,7 +105,50 @@ table.table-style-two td {
 </head>
 <body>
 
-	<div id="pagebody">
+<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> Menu <i
+						class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand" href="./usercontent">Spring seminar</a>
+			</div>
+	
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="./usercontent?pageNo=1">BULLETIN BOARD</a></li>
+					<li><a href="./noticeboardlist">NOTICE</a></li>
+					<li><a href="./userqnaboard">Q&A</a></li>
+					<li><a href="./useraccountmodify">MY ACCOUNT</a></li>
+					<li><a href="./logout">LOGOUT</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	<!-- /.container --> 
+	</nav>
+
+	<!-- Page Header -->
+	<!-- Set your background image for this header on the line below. -->
+	<header class="intro-header" style="background-image: url('./resources/img/post-bg.jpg')">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<div class="site-heading">
+						<h1>Q&A BOARD</h1>
+						<hr class="small">
+						<span class="subheading">It is a Q&A BOARD by JI</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
 		<center>
 			<br /> <br />
 			<table class="table-style-two" border="1" summary="게시판 목록">
@@ -165,11 +221,48 @@ table.table-style-two td {
 
 			</p>
 		</center>
-		<div id="footer">
-			<address>Copyright (c) by SoenHakJi</address>
-
+		<!-- Footer -->
+		<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<ul class="list-inline text-center">
+						<li><a href="#"> <span class="fa-stack fa-lg"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+							</span>
+						</a></li>
+						<li><a href="#"> <span class="fa-stack fa-lg"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+							</span>
+						</a></li>
+						<li><a href="#"> <span class="fa-stack fa-lg"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-github fa-stack-1x fa-inverse"></i>
+							</span>
+						</a></li>
+					</ul>
+					<center>
+					<p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+					</center>
+				</div>
+			</div>
 		</div>
-	</div>
+		</footer>
+	
+	<!-- jQuery -->
+	<script src="./resources/vendor/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="./resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Contact Form JavaScript -->
+	<script src="./resources/js/jqBootstrapValidation.js"></script>
+	<script src="./resources/js/contact_me.js"></script>
+
+	<!-- Theme JavaScript -->
+	<script src="./resources/js/clean-blog.min.js"></script>
 
 </body>
 </html>

@@ -41,6 +41,24 @@ var logAccessCount=${logStatisListAccessCount};
 						verticalAlign : 'middle',
 						borderWidth : 0
 					},
+					
+					 plotOptions: {
+			                series: {
+			                    cursor: 'pointer',
+			                    point: {
+			                        events: {
+			                            click: function (e) {
+			                            	
+			                            	 location.href =  './adminlogmanager';
+			                               
+			                            }
+			                        }
+			                    },
+			                    marker: {
+			                        lineWidth: 1
+			                    }
+			                }
+			            },
 					series : [
 							{
 								name : '전체 접속자',

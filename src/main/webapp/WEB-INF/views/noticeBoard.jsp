@@ -192,8 +192,6 @@ table.table-style-two td {
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<div id="pagebody">
-
 					<div class="jquery-script-clear"></div>
 					<center>
 						<br /> <br />
@@ -308,7 +306,6 @@ table.table-style-two td {
 
 						</p>
 					</center>
-				</div>
 			</div>
 		</div>
 		<!-- Footer -->
