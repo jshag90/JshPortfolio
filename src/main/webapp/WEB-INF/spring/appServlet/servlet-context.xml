@@ -11,14 +11,20 @@
 
 	<tx:annotation-driven />
 
-	<!-- <tx:advice id="transactionAdvice" transaction-manager="transactionManager"> 
-		<tx:attributes> <tx:method name="*List" propagation="REQUIRED" read-only="true" 
-		/> <tx:method name="insert*" rollback-for="Exception" /> <tx:method name="*Delete*" 
-		rollback-for="Exception" /> <tx:method name="*Modify*" rollback-for="Exception" 
-		/> <tx:method name="*Update*" rollback-for="Exception" /> </tx:attributes> 
-		</tx:advice> <aop:config> <aop:pointcut expression="execution(public * com.secuve.seminar..*Service*(..))" 
-		id="servicePublicMethod"/> <aop:advisor advice-ref="transactionAdvice" pointcut-ref="servicePublicMethod"/> 
-		</aop:config> -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*List" propagation="REQUIRED" read-only="true" />
+			<tx:method name="insert*" rollback-for="Exception" />
+			<tx:method name="*Delete*" rollback-for="Exception" />
+			<tx:method name="*Modify*" rollback-for="Exception" />
+			<tx:method name="*Update*" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(public * com.secuve.seminar..*Service*(..))" id="servicePublicMethod" />
+		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="servicePublicMethod" />
+	</aop:config>
 
 	<annotation-driven />
 
@@ -51,10 +57,11 @@
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="contentType" value="text/html; charset=UTF-8" />
 	</beans:bean>
-	
+
 
 	<aop:aspectj-autoproxy />
 	<beans:bean id="logAop" class="com.spring.seminar.aop.LogAop" />
+	<beans:bean id="SessionAop" class="com.spring.seminar.aop.SessionAop" />
 
 	<beans:bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -67,7 +74,7 @@
 		<beans:property name="url"
 			value="jdbc:mysql://localhost:3306/seminar" />
 		<beans:property name="username" value="root" />
-		<beans:property name="password" value="1234" />
+		<beans:property name="password" value="secuve00." />
 	</beans:bean>
 
 
@@ -94,6 +101,17 @@
 	<beans:bean name="transactionTemplate"
 		class="org.springframework.transaction.support.TransactionTemplate">
 		<beans:property name="transactionManager" ref="transactionManager"></beans:property>
+	</beans:bean>
+
+	<beans:bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<beans:property name="exceptionMappings">
+			<beans:props>
+				<beans:prop key="java.lang.Exception">
+					index
+				</beans:prop>
+			</beans:props>
+		</beans:property>
 	</beans:bean>
 
 </beans:beans>

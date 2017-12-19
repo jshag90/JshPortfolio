@@ -2,6 +2,8 @@ package com.spring.seminar;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,7 @@ public class AdminMainController {
 	AdminMainService adminMainService;
 
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
-	public String adminContent(@ModelAttribute("qna") Qna qna, @ModelAttribute("user") User user,Model model) {
+	public String adminContent( @ModelAttribute("qna") Qna qna, @ModelAttribute("user") User user, Model model) {
 		System.out.println("adminContent()");
 		ArrayList<Log> accessIdList = adminMainService.accessIdSearch();
 		model.addAttribute("accessIdList", accessIdList);
@@ -82,7 +84,7 @@ public class AdminMainController {
 		model.addAttribute("todayAccessUserCount", todayAccessUserCount);
 		
 		ArrayList<LogStatis> logStatisListByUserName = adminMainService.accessLogStatisbyLogUserName(logUserName);
-		//UserNameÀ» ÆÄ¶ó¹ÌÅÍ·Î ³Ñ°ÜÁÖ°í ÇØ´ç UserNameÀÇ Á¢¼Ó È½¼ö¿Í Á¢¼Ó ½Ã°£À» Return
+		//UserNameï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í·ï¿½ ï¿½Ñ°ï¿½ï¿½Ö°ï¿½ ï¿½Ø´ï¿½ UserNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ Return
 		ArrayList<String> logStatisListHourByUserName = new ArrayList<String>();
 		ArrayList<String> logStatisListAccessCountByUserName = new ArrayList<String>();
 		

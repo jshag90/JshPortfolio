@@ -3,6 +3,7 @@ package com.spring.seminar;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class UserLoginServiceController {
 	private UserBoardService userBoardService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {//?��?��?�� ?��?�� 객체 초기?��
+	public String home(HttpServletRequest httpServletRequest, Model model) {//?��?��?�� ?��?�� 객체 초기?��
 
 		model.addAttribute("user", new User());
 		model.addAttribute("board", new Board());
@@ -79,7 +80,7 @@ public class UserLoginServiceController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginProcess(@ModelAttribute("user") User user, @RequestParam("userName") String userName,
+	public String loginProcess(HttpServletRequest httpServletRequest, @ModelAttribute("user") User user, @RequestParam("userName") String userName,
 			@RequestParam("password") String password, Model model) {
 		System.out.println("userName:" + userName);
 		System.out.println("password:" + password);
