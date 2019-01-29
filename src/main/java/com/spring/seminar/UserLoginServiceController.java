@@ -1,6 +1,5 @@
 package com.spring.seminar;
 
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +23,6 @@ import com.spring.seminar.dto.Notice;
 import com.spring.seminar.dto.Qna;
 import com.spring.seminar.dto.User;
 import com.spring.seminar.dto.UserInfo;
-import com.spring.seminar.mapper.UsersMapper;
 import com.spring.seminar.service.UserBoardService;
 import com.spring.seminar.service.UserLoginService;
 

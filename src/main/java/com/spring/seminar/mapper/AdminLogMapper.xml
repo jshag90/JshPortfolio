@@ -13,29 +13,38 @@
 	</resultMap>
 
 	<select id="logList" resultMap="LogResult">
-		select * from log order by	LogRegDate DESC
+		SELECT * FROM log 
+		ORDER BY LogRegDate DESC
 	</select>
 	
 	<insert id="logInsert" parameterType="com.spring.seminar.dto.Log">
 		INSERT INTO
-		log(LogUserName,LogRegDate,LogId,LogContent,IpAddress,LogInHit)
-		values(#{LogUserName},NOW(),#{LogId},#{LogContent},#{IpAddress},#{LogInHit})
+		LOG(LogUserName,LogRegDate,LogId,LogContent,IpAddress,LogInHit)
+		VALUES(#{LogUserName},NOW(),#{LogId},#{LogContent},#{IpAddress},#{LogInHit})
 	</insert>
 	
 	<select id="logListbyLogUserName" parameterType="java.lang.String" resultMap="LogResult">
-		select * from log where LogUserName=#{LogUserName} order by	LogRegDate DESC
+		SELECT * FROM log 
+		WHERE LogUserName=#{LogUserName} 
+		ORDER BY LogRegDate DESC
 	</select>
 	
 	<select id="logListbyAccessIp" parameterType="java.lang.String" resultMap="LogResult">
-		select * from log where IpAddress=#{IpAddress} order by LogRegDate DESC
+		SELECT * FROM log 
+		WHERE IpAddress=#{IpAddress} 
+		ORDER BY LogRegDate DESC
 	</select>
 	
 	<select id="logListbyDate" parameterType="java.lang.String" resultMap="LogResult">
-		select * from log where LogRegDate=#{LogRegDate} order by LogRegDate DESC
+		SELECT * FROM log 
+		WHERE LogRegDate=#{LogRegDate} 
+		ORDER BY LogRegDate DESC
 	</select>
 	
 	<select id="logListbyContent" parameterType="java.lang.String" resultMap="LogResult">
-		select * from log where LogContent=#{LogContent} order by LogRegDate DESC
+		SELECT * FROM log 
+		WHERE LogContent=#{LogContent} 
+		ORDER BY LogRegDate DESC
 	</select>
 
 </mapper>

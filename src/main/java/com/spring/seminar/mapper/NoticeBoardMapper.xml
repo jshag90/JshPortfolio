@@ -14,24 +14,30 @@
 	</resultMap>
 
 	<select id="noticeBoardList" resultMap="NoticeResult">
-		select * from notice	order by NoticeId DESC
+		SELECT * FROM notice	
+		ORDER BY NoticeId DESC
 	</select>
 
 	<insert id="noticeBoardWrite" parameterType="com.spring.seminar.dto.Notice">
-		insert into notice(NoticeId,NoticeUserName,NoticeTitle,NoticeContent,NoticeRegDate)
-		values(#{NoticeId},#{NoticeUserName},#{NoticeTitle},#{NoticeContent},NOW())
+		INSERT INTO NOTICE(NoticeId,NoticeUserName,NoticeTitle,NoticeContent,NoticeRegDate)
+		VALUES(#{NoticeId},#{NoticeUserName},#{NoticeTitle},#{NoticeContent},NOW())
 	</insert>
 
 	<delete id="noticeBoardDelete" parameterType="long">
-		delete from notice where NoticeId=#{NoticeId}
+		DELETE FROM notice 
+		WHERE NoticeId=#{NoticeId}
 	</delete>
 
 	<select id="noticeBoardViewbyNoticeId" resultMap="NoticeResult">
-		select * from notice where NoticeId=#{NoticeId}
+		SELECT * FROM notice 
+		WHERE NoticeId=#{NoticeId}
 	</select>
 
 	<update id="noticeBoardModifybyNoticeId" parameterType="com.spring.seminar.dto.Notice">
-		update 	notice set NoticeTitle=#{NoticeTitle}, NoticeContent=#{NoticeContent} where NoticeId=#{NoticeId}
+		UPDATE notice 
+			SET NoticeTitle=#{NoticeTitle}
+			, NoticeContent=#{NoticeContent} 
+		WHERE NoticeId=#{NoticeId}
 	</update>	
 
 </mapper>

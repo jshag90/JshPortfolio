@@ -10,7 +10,8 @@
 	</resultMap>
 
 	<select id="accessIdSearch" resultMap="accessIdResult">
-		SELECT DISTINCT LogUserName FROM log order by LogRegDate ASC LIMIT 5
+		SELECT DISTINCT LogUserName 
+		FROM log order by LogRegDate ASC LIMIT 5
 	</select>
 
 	<resultMap id="latestBoardResult" type="com.spring.seminar.dto.Board">
@@ -19,7 +20,11 @@
 	</resultMap>
 
 	<select id="latestBoard" resultMap="latestBoardResult">
-		SELECT bId,bTitle FROM userBoard order by bRegDate ASC LIMIT 5
+		SELECT 
+			 bId
+			,bTitle 
+		FROM userBoard 
+		ORDER BY bRegDate ASC LIMIT 5
 	</select>
 
 	<resultMap id="latestQnaBoardResult" type="com.spring.seminar.dto.Qna">
@@ -45,19 +50,27 @@
 	</resultMap>
 	
 	<select id="accessLogStatis" resultMap="accessLogStatisResult">
-	select  count(DISTINCT LogUserName) as accessCount, date_format(LogRegDate,'%H') as hour from log where LogRegDate>curdate() 
-	group by date_format(LogRegDate, '%H') order by LogRegDate asc
+		SELECT count(DISTINCT LogUserName) as accessCount
+			 , date_format(LogRegDate,'%H') as hour 
+		FROM log WHERE LogRegDate > curdate() 
+		GROUP BY date_format(LogRegDate, '%H') 
+		ORDER BY LogRegDate asc
 	</select>
 	<!-- 시간대별로 접속한 사용자들 중에서 중복된 사용자들을 제거하고 이 사용자들의 명수를 count -->
 	
 	<select id="accessLogStatisbyLogUserName" parameterType="java.lang.String" resultMap="accessLogStatisResult">
-    select LogInHit as accessCount, date_format(LogRegDate,'%H') as hour from log where LogRegDate>curdate() and LogUserName=#{LogUserName}    
-	group by date_format(LogRegDate, '%H') order by LogRegDate asc
+	    SELECT 
+	    	  LogInHit as accessCount
+	    	, date_format(LogRegDate,'%H') as hour 
+	    FROM log WHERE LogRegDate>curdate() AND LogUserName=#{LogUserName}    
+		GROUP BY date_format(LogRegDate, '%H') 
+		ORDER BY LogRegDate ASC
 	</select>
 	<!-- 특정 사용자의 시간대별 접속 시간에서 로그인 횟수를 count -->
-	
 	<update id="accessLogLogInHit"  parameterType="java.lang.String">
-	update log set LogInHit=LogInHit+1 where LogUserName=#{LogUserName} and date_format(LogRegDate,'%H')=date_format(NOW(),'%H')
+		UPDATE log set LogInHit=LogInHit+1 
+		WHERE LogUserName=#{LogUserName} 
+		AND date_format(LogRegDate,'%H')=date_format(NOW(),'%H')
 	</update>
 	<!-- 특정 사용자의 시간대별 특정 조건일때 값을 전달받아서 현재 시간에 해당하는 시간에서 Hit를 증가시킴 -->
 
