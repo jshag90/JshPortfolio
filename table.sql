@@ -53,7 +53,6 @@ create table `qna`(
   PRIMARY KEY(`QnaId`)
  )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
- 
  create table `notice`(
   `NoticeId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `NoticeUserName` varchar(255) NOT NULL,

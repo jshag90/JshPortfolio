@@ -5,32 +5,16 @@
 <head>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="./resources/css/mystyle.css" />
-<link href="http://www.jqueryscript.net/css/jquerysctipttop.css"
-	rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./resources/css/mystyle.css" />
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="./resources/script/bootstrap.min.css">
-
-<!-- Bootstrap Core CSS -->
-<link href="./resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-<!-- Theme CSS -->
+<link href="./resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="./resources/css/clean-blog.min.css" rel="stylesheet">
-
-<!-- Custom Fonts -->
-<link href="./resources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
-
+<link href="./resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
 <style type="text/css">
 * {
@@ -45,8 +29,7 @@ p {
 table tbody tr th {
 	background-color: gray;
 }
-</style>
-<style type="text/css">
+
 table.table-style-two {
 	font-family: verdana, arial, sans-serif;
 	color: #333333;
@@ -74,8 +57,7 @@ table.table-style-two td {
 	border-color: #517994;
 	background-color: #999999;
 }
-</style>
-<style type="text/css">
+
 .paging-nav {
 	text-align: right;
 	padding-top: 2px;
@@ -102,6 +84,21 @@ table.table-style-two td {
 	font-family: Arial, sans-serif;
 	zoom: 1.2;
 }
+#faqs {
+	position: relative;
+}
+
+#faqs h3 {
+	cursor: pointer;
+}
+
+#faqs h3.active {
+	color: #d74646;
+}
+
+#faqs div {
+	position: relative;
+}
 </style>
 
 <script type="text/javascript">
@@ -121,28 +118,8 @@ table.table-style-two td {
 			});
 </script>
 
-<style type="text/css">
-#faqs {
-	position: relative;
-}
-
-#faqs h3 {
-	cursor: pointer;
-}
-
-#faqs h3.active {
-	color: #d74646;
-}
-
-#faqs div {
-	position: relative;
-}
-</style>
-
 </head>
 <body>
-
-
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
 	<div class="container-fluid">

@@ -160,7 +160,7 @@
 						</a></li>
 					</ul>
 					<center>
-					<p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+					<p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
 					</center>
 				</div>
 			</div>
