@@ -1,4 +1,4 @@
-package com.spring.seminar;
+package com.spring.seminar.controller;
 
 import java.sql.Date;
 import java.util.List;

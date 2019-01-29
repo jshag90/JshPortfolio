@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.spring.seminar.UserLoginServiceController;
+import com.spring.seminar.controller.UserLoginServiceController;
 import com.spring.seminar.dto.Log;
 import com.spring.seminar.mapper.UsersMapper;
 import com.spring.seminar.service.AdminLogManagerService;
@@ -62,9 +62,9 @@ public class LogAop {
 		String passwordTemp = password;
 		String joipointStringTemp = joinpoint.getSignature().toShortString();
 
-		if (!userLoginService.getUserByUserNameAndIsAdmin(userNameTemp, passwordTemp, "y")//°ü¸®ÀÚ ±ÇÇÑÀÎÁö ÆÄ¾Ç
-				&& !userNameTemp.equals("init") && !passwordTemp.equals("0000")//º¯¼ö ÃÊ±â°ª¿¡ ´ëÇÑ Á¶°Ç
-				&& !joipointStringTemp.contains("HomeController.home(..)")) {//À¥ Ã¹ÆäÀÌÁö¿¡ ´ëÇÑ joinpoint ¸Þ¼Òµå ¸í Á¦¿Ü Á¶°Ç
+		if (!userLoginService.getUserByUserNameAndIsAdmin(userNameTemp, passwordTemp, "y")//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¾ï¿½
+				&& !userNameTemp.equals("init") && !passwordTemp.equals("0000")//ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±â°ªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				&& !joipointStringTemp.contains("HomeController.home(..)")) {//ï¿½ï¿½ Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ joinpoint ï¿½Þ¼Òµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			
 			Log log = new Log();
 			log.setLogId(logId++);
@@ -75,11 +75,11 @@ public class LogAop {
 			
 		}
 
-		// ´ÙÀ½ ¸Þ¼Òµå°¡ ³ª¿À¸é ÇØ´ç IdÀÇ ·Î±×ÀÎ Hit¸¦ ¾÷µ¥ÀÌÆ®ÇØÁÜ
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµå°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ Idï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ Hitï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½
 		if (joipointStringTemp.contains("HomeController.loginProcess(..)")) {
 			try {
 				adminMainService.accessLogLogInHit(userName);
-				// ·Î±× Á¤º¸°¡ ¾ø¾î¼­ ÀÍ¼Á¼Ç ¹ß»ý½Ã ¿¹¿Ü Ã³¸®
+				// ï¿½Î±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¼­ ï¿½Í¼ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -103,24 +103,24 @@ public class LogAop {
 		String className = null;
 		int index = 1;
 
-		// ¸Å°³ º¯¼ö ´ë»ó »çÀÌ¸¦ ¿Å°Ü´Ù´Ï±â
+		// ï¿½Å°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Å°Ü´Ù´Ï±ï¿½
 		for (Object info : args) {
-			// °³Ã¼ À¯Çü °¡Á®¿À±â
+			// ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			className = info.getClass().getName();
 			className = className.substring(className.lastIndexOf(".") + 1);
-			rs.append("[ÀÎÀÚ " + index + "Á¾·ù:" + className + "°ª:");
-			// ´ë»ó ¸ðµç ¹æ¹ýÀ» °¡Á®¿À±â
+			rs.append("[ï¿½ï¿½ï¿½ï¿½ " + index + "ï¿½ï¿½ï¿½ï¿½:" + className + "ï¿½ï¿½:");
+			// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			Method[] methods = info.getClass().getDeclaredMethods();
-			// »çÀÌ¸¦ ¿Å°Ü´Ù´Ï±â ¹æ¹ýÀ» ÆÇ´Ü get ¹æ¹ý
+			// ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Å°Ü´Ù´Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ get ï¿½ï¿½ï¿½
 			for (Method method : methods) {
 				String methodName = method.getName();
-				// ÆÇ´Ü È¤½Ã get ¹æ¹ý
-				if (methodName.indexOf("get") == -1) {// get ¹æ¹ýÀÌ ¾Æ´Ï´Ù.
-					continue;// Ã³¸®ÇÒ ¼ö ¾ø´Ù
+				// ï¿½Ç´ï¿½ È¤ï¿½ï¿½ get ï¿½ï¿½ï¿½
+				if (methodName.indexOf("get") == -1) {// get ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï´ï¿½.
+					continue;// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				}
 				Object rsValue = null;
 				try {
-					// È£Ãâ get ¹æ¹ýÀ» °¡Á®¿À±â º¹±Í °ª
+					// È£ï¿½ï¿½ get ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 					rsValue = method.invoke(info);
 				} catch (Exception e) {
 					continue;
@@ -151,7 +151,7 @@ public class LogAop {
 		}
 
 		if (logIp == null || logIp.length() == 0) {
-			logIp = req.getHeader("WL-Proxy-Client-IP"); // À¥·ÎÁ÷
+			logIp = req.getHeader("WL-Proxy-Client-IP"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}
 
 		if (logIp == null || logIp.length() == 0) {

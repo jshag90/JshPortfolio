@@ -1,4 +1,4 @@
-package com.spring.seminar;
+package com.spring.seminar.controller;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class AdminUserManagerController {
 	@Transactional(propagation=Propagation.REQUIRED)
 	public String adminManagerDelete(@ModelAttribute("user") User user, @RequestParam("id") long id, Model model) {
 
-		System.out.println("Àü´Þ¹ÞÀº id °ª :" + id);
+		System.out.println("ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ id ï¿½ï¿½ :" + id);
 
 		userManagerService.userInfoManagerDeleteByInfoId(id);
 		userManagerService.userManagerDeletebyBId(id);
@@ -54,8 +54,8 @@ public class AdminUserManagerController {
 	public String adminManagerIsAdmin(@ModelAttribute("user") User user, @RequestParam("id") long id,
 			@RequestParam("isAdmin") String isAdmin, Model model) {
 		System.out.println("adminManagerIsAdmin()");
-		System.out.println("Àü´Þ¹ÞÀº id °ª :" + id);
-		System.out.println("Àü´Þ¹ÞÀº isAdmin" + isAdmin);
+		System.out.println("ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ id ï¿½ï¿½ :" + id);
+		System.out.println("ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ isAdmin" + isAdmin);
 		user.setId(id);
 		user.setIsAdmin(isAdmin);
 

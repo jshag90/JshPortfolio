@@ -1,4 +1,4 @@
-package com.spring.seminar;
+package com.spring.seminar.controller;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class QnaController {
 	@RequestMapping(value = "/adminqnaboardanswerwrite")
 	public String adminQnaBoardAnswer(@ModelAttribute("user") User user, Model model, @ModelAttribute("qna") Qna qna,
 			@RequestParam("qnaId") long qnaId) {
-		System.out.println("ÀÌ°Ç ana Á¦¸ñ " + qnaId);
+		System.out.println("ï¿½Ì°ï¿½ ana ï¿½ï¿½ï¿½ï¿½ " + qnaId);
 		qna = qnaBoardService.qnaBoardViewbyQnaId(qnaId);
 		model.addAttribute("qnaUser", qna.getqnaUserName());
 		model.addAttribute("qnaQuestion", qna.getqnaQuestion());
