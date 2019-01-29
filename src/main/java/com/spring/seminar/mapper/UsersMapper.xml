@@ -20,47 +20,54 @@
 	</resultMap>
 	
 	<insert id="insertUsersInfo" parameterType="com.spring.seminar.dto.UserInfo">
-	INSERT INTO usersInfo(email, tel) values(#{email}, #{tel})
+		INSERT INTO usersInfo(email, tel) values(#{email}, #{tel})
 	</insert>
 	
 	<select id="userInfoList" resultMap="UserInfoResult">
-		select * from usersInfo
+		SELECT * FROM usersInfo
 	</select>
 
 	<select id="getUserByUserName" resultType="com.spring.seminar.dto.User">
-		select * from users where userName=#{userName}
+		SELECT * FROM users 
+		WHERE userName=#{userName}
 	</select>
 	
 	<select id="getUserInfoByInfoId" parameterType="long" resultType="com.spring.seminar.dto.UserInfo">
-		select * from usersInfo where infoId=#{infoId}
+		SELECT * FROM usersInfo 
+		WHERE infoId=#{infoId}
 	</select>
 
 	<select id="userList" resultMap="UserResult">
-		select * from users
+		SELECT * FROM users
 	</select>
 
 	<update id="userAccountModifybyUserName" parameterType="com.spring.seminar.dto.User">
-		update users set password=#{password} where	userName=#{userName}
+		UPDATE users SET password=#{password} 
+		WHERE userName=#{userName}
 	</update>
 	
 	<update id="userInfoAccountModifybyUserName" parameterType="com.spring.seminar.dto.UserInfo">
-		update usersInfo set email=#{email}, tel=#{tel} where infoId=#{infoId}
+		UPDATE usersInfo 
+		SET 
+			  email=#{email}
+			, tel=#{tel} 
+		WHERE infoId=#{infoId}
 	</update>
 
 	<delete id="userManagerDeleteById"  parameterType="long">
-		delete from	users where id=#{id}
+		DELETE FROM	users WHERE id=#{id}
 	</delete>
 	
 	<delete id="userInfoManagerDeleteByInfoId" parameterType="long">
-		delete from usersInfo where infoId=#{infoId}
+		DELETE FROM usersInfo WHERE infoId=#{infoId}
 	</delete>
 
 	<update id="userManagerIsAdminUpdateById" parameterType="com.spring.seminar.dto.User">
-		update users set isAdmin=#{isAdmin} where id=#{id}
+		UPDATE users SET isAdmin=#{isAdmin} WHERE id=#{id}
 	</update>
 
 	<select id="getIdbyUserName" parameterType="java.lang.String" resultType="long">
-		select id from users where userName=#{userName}
+		SELECT id FROM users WHERE userName=#{userName}
 	</select>
 
 </mapper>

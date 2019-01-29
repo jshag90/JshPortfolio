@@ -15,11 +15,13 @@
 	</resultMap>
 
 	<select id="userBoardList" resultMap="BoardResult" >
-		select * from userBoard order by bId DESC LIMIT #{offset},5
+		SELECT * FROM userBoard ORDER BY bId DESC LIMIT #{offset},5
 	</select>
 	
 	<select id="userBoardListPaging" parameterType ="hashmap" resultMap="BoardResult">
-		select * from userBoard order by bId DESC LIMIT #{offset},#{noOfRecords}
+		SELECT * FROM userBoard 
+		ORDER BY bId DESC 
+		LIMIT #{offset},#{noOfRecords}
 	</select>
 	
 	<select id="userBoardListCount" resultType="int">
@@ -27,24 +29,28 @@
 	</select>
 
 	<insert id="userBoardWrite" parameterType="com.spring.seminar.dto.Board">
-		INSERT INTO userBoard(bId, bUserName, bTitle, bContent, bHit, bRegDate) values(#{bId},	#{bUserName}, #{bTitle}, #{bContent},#{bHit},#{bRegDate})
+		INSERT INTO userBoard(bId, bUserName, bTitle, bContent, bHit, bRegDate) 
+		values(#{bId}, #{bUserName}, #{bTitle}, #{bContent},#{bHit},#{bRegDate})
 	</insert>
 
 	<select id="userBoardViewbybId" resultType="com.spring.seminar.dto.Board">
-		select * from userBoard where bId=#{bId}
+		SELECT * FROM userBoard WHERE bId=#{bId}
 	</select>
 
-
 	<update id="userBoardModifybyBId" parameterType="com.spring.seminar.dto.Board">
-		update userBoard set bTitle=#{bTitle}, bContent=#{bContent} where bId=#{bId}
+		UPDATE userBoard 
+		SET bTitle=#{bTitle}, bContent=#{bContent} 
+		WHERE bId=#{bId}
 	</update>
 
 	<delete id="userBoardDelete" parameterType="long">
-		delete from userBoard where bId=#{bId}
+		DELETE FROM userBoard
+		WHERE bId=#{bId}
 	</delete>
 
 	<update id="userBoardHitCount" parameterType="long">
-		update userBoard set bHit=bHit+1 where bId=#{bId}
+		UPDATE userBoard SET bHit=bHit+1 
+		WHERE bId=#{bId}
 	</update>
 	
 </mapper>

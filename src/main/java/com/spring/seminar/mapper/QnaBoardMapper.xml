@@ -10,28 +10,28 @@
 		<result property="qnaQuestion" column="QnaQuestion" />
 		<result property="qnaAnswer" column="QnaAnswer" />
 		<result property="qnaRegDate" column="QnaRegDate" javaType="java.sql.Date" />
-
 	</resultMap>
 
 	<select id="qnaList" resultMap="QnaResult">
-		select * from qna order by QnaId
-		DESC
+		SELECT * FROM qna 
+		ORDER BY QnaId DESC
 	</select>
 
 	<insert id="qnaBoardWrite" parameterType="com.spring.seminar.dto.Qna">
-		insert into qna(qnaId, qnaUserName, qnaQuestion, qnaAnswer, qnaRegDate) values(#{qnaId},#{qnaUserName},#{qnaQuestion},#{qnaAnswer},NOW())
+		INSERT INTO qna(qnaId, qnaUserName, qnaQuestion, qnaAnswer, qnaRegDate) 
+		VALUES(#{qnaId},#{qnaUserName},#{qnaQuestion},#{qnaAnswer},NOW())
 	</insert>
 
 	<select id="qnaBoardViewbyQnaId" resultType="com.spring.seminar.dto.Qna">
-		select * from qna where qnaId=#{qnaId}
+		SELECT * FROM qna WHERE qnaId=#{qnaId}
 	</select>
 
 	<update id="qnaBoardUpdatebyQnaId" parameterType="com.spring.seminar.dto.Qna">
-		update qna set QnaAnswer=#{qnaAnswer} where qnaId=#{qnaId}
+		UPDATE qna SET QnaAnswer=#{qnaAnswer} WHERE qnaId=#{qnaId}
 	</update>
 	
 	<delete id="qnaBoradDeleteByQnaId" parameterType="long">
-		delete from qna where qnaId=#{qnaId}
+		DELETE FROM qna WHERE qnaId=#{qnaId}
 	</delete>
 
 </mapper>
