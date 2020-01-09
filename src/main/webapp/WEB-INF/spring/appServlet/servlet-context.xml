@@ -56,14 +56,14 @@
 		<beans:property name="contentType" value="text/html; charset=UTF-8" />
 	</beans:bean>
 
-	<aop:aspectj-autoproxy />
-	<beans:bean id="logAop" class="com.spring.seminar.aop.LogAop" />
-	<beans:bean id="SessionAop" class="com.spring.seminar.aop.SessionAop" />
+<!-- 	<aop:aspectj-autoproxy /> -->
+<!-- 	<beans:bean id="logAop" class="com.spring.seminar.aop.LogAop" /> -->
+<!-- 	<beans:bean id="SessionAop" class="com.spring.seminar.aop.SessionAop" /> -->
 
-	<beans:bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<beans:property name="basename" value="jdbc" />
-	</beans:bean>
+<!-- 	<beans:bean id="messageSource" -->
+<!-- 		class="org.springframework.context.support.ResourceBundleMessageSource"> -->
+<!-- 		<beans:property name="basename" value="jdbc" /> -->
+<!-- 	</beans:bean> -->
 
 	<beans:bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -71,7 +71,7 @@
 		<beans:property name="url"
 			value="jdbc:mysql://localhost:3306/seminar" />
 		<beans:property name="username" value="root" />
-		<beans:property name="password" value="secuve00." />
+		<beans:property name="password" value="jshag90" />
 	</beans:bean>
 
 
