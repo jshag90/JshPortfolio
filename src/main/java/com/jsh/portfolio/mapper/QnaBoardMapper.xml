@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jsh.portfolio.mapper.QnaBoardMapper">
+
+	<resultMap id="QnaResult" type="com.jsh.portfolio.dto.Qna">
+		<result property="qnaId" column="QnaId" />
+		<result property="qnaUserName" column="QnaUserName" />
+		<result property="qnaQuestion" column="QnaQuestion" />
+		<result property="qnaAnswer" column="QnaAnswer" />
+		<result property="qnaRegDate" column="QnaRegDate" javaType="java.sql.Date" />
+	</resultMap>
+
+	<select id="qnaList" resultMap="QnaResult">
+		SELECT * FROM qna 
+		ORDER BY QnaId DESC
+	</select>
+
+	<insert id="qnaBoardWrite" parameterType="com.jsh.portfolio.dto.Qna">
+		INSERT INTO qna(qnaId, qnaUserName, qnaQuestion, qnaAnswer, qnaRegDate) 
+		VALUES(#{qnaId},#{qnaUserName},#{qnaQuestion},#{qnaAnswer},NOW())
+	</insert>
+
+	<select id="qnaBoardViewbyQnaId" resultType="com.jsh.portfolio.dto.Qna">
+		SELECT * FROM qna WHERE qnaId=#{qnaId}
+	</select>
+
+	<update id="qnaBoardUpdatebyQnaId" parameterType="com.jsh.portfolio.dto.Qna">
+		UPDATE qna SET QnaAnswer=#{qnaAnswer} WHERE qnaId=#{qnaId}
+	</update>
+	
+	<delete id="qnaBoradDeleteByQnaId" parameterType="long">
+		DELETE FROM qna WHERE qnaId=#{qnaId}
+	</delete>
+
+</mapper>

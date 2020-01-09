@@ -22,15 +22,15 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(public * com.secuve.seminar..*Service*(..))" id="servicePublicMethod" />
+		<aop:pointcut expression="execution(public * com.jsh.portfolio..*Service*(..))" id="servicePublicMethod" />
 		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="servicePublicMethod" />
 	</aop:config>
 
 	<annotation-driven />
 
-	<context:component-scan base-package="com.spring.seminar" />
-	<context:component-scan base-package="com.spring.seminar.aop" />
-	<context:component-scan base-package="com.spring.bootstrap" />
+	<context:component-scan base-package="com.jsh.portfolio" />
+	<context:component-scan base-package="com.jsh.portfolio.aop" />
+	<context:component-scan base-package="com.jsh.bootstrap" />
 
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/resources/images/**" location="/resources/images/" />
@@ -57,8 +57,8 @@
 	</beans:bean>
 
 <!-- 	<aop:aspectj-autoproxy /> -->
-<!-- 	<beans:bean id="logAop" class="com.spring.seminar.aop.LogAop" /> -->
-<!-- 	<beans:bean id="SessionAop" class="com.spring.seminar.aop.SessionAop" /> -->
+<!-- 	<beans:bean id="logAop" class="com.jsh.portfolio.aop.LogAop" /> -->
+<!-- 	<beans:bean id="SessionAop" class="com.jsh.portfolio.aop.SessionAop" /> -->
 
 <!-- 	<beans:bean id="messageSource" -->
 <!-- 		class="org.springframework.context.support.ResourceBundleMessageSource"> -->
@@ -69,7 +69,7 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="org.mariadb.jdbc.Driver" />
 		<beans:property name="url"
-			value="jdbc:mysql://localhost:3306/seminar" />
+			value="jdbc:mysql://localhost:3306/jsh_portfolio" />
 		<beans:property name="username" value="root" />
 		<beans:property name="password" value="jshag90" />
 	</beans:bean>
@@ -77,13 +77,12 @@
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
-		<beans:property name="typeAliasesPackage" value="com.spring.seminar.mapper" />
-		<beans:property name="mapperLocations"
-			value="classpath*:com/secuve/seminar/mapper/*.xml" />
+		<beans:property name="typeAliasesPackage" value="com.jsh.portfolio.mapper" />
+		<beans:property name="mapperLocations" value="classpath*:com/jsh/portfolio/mapper/*.xml" />
 	</beans:bean>
 
 	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<beans:property name="basePackage" value="com.spring.seminar.mapper" />
+		<beans:property name="basePackage" value="com.jsh.portfolio.mapper" />
 	</beans:bean>
 
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

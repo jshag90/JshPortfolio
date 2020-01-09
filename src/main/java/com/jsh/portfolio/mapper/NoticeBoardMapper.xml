@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jsh.portfolio.mapper.NoticeBoardMapper">
+
+	<resultMap id="NoticeResult" type="com.jsh.portfolio.dto.Notice">
+		<result property="noticeId" column="NoticeId" />
+		<result property="noticeUserName" column="NoticeUserName" />
+		<result property="noticeTitle" column="NoticeTitle" />
+		<result property="noticeContent" column="NoticeContent" />
+		<result property="noticeRegDate" column="NoticeRegDate" 	javaType="java.sql.Date" />
+
+	</resultMap>
+
+	<select id="noticeBoardList" resultMap="NoticeResult">
+		SELECT * FROM notice	
+		ORDER BY NoticeId DESC
+	</select>
+
+	<insert id="noticeBoardWrite" parameterType="com.jsh.portfolio.dto.Notice">
+		INSERT INTO NOTICE(NoticeId,NoticeUserName,NoticeTitle,NoticeContent,NoticeRegDate)
+		VALUES(#{NoticeId},#{NoticeUserName},#{NoticeTitle},#{NoticeContent},NOW())
+	</insert>
+
+	<delete id="noticeBoardDelete" parameterType="long">
+		DELETE FROM notice 
+		WHERE NoticeId=#{NoticeId}
+	</delete>
+
+	<select id="noticeBoardViewbyNoticeId" resultMap="NoticeResult">
+		SELECT * FROM notice 
+		WHERE NoticeId=#{NoticeId}
+	</select>
+
+	<update id="noticeBoardModifybyNoticeId" parameterType="com.jsh.portfolio.dto.Notice">
+		UPDATE notice 
+			SET NoticeTitle=#{NoticeTitle}
+			, NoticeContent=#{NoticeContent} 
+		WHERE NoticeId=#{NoticeId}
+	</update>	
+
+</mapper>
