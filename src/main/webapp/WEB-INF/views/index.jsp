@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 
-<title>Spring Seminar</title>
+<title>선학's의 포토폴리오</title>
 
 </head>
 

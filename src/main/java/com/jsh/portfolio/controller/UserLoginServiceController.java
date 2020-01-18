@@ -46,7 +46,7 @@ public class UserLoginServiceController {
 		model.addAttribute("notice", new Notice());
 		model.addAttribute("userInfo", new UserInfo());
 
-		return "home";
+		return "/bootstrap/index";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
